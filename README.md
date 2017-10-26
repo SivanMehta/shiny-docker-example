@@ -3,7 +3,7 @@
 1. Generate fake contributor data where each row is as follows:
   - `username` --> from random list of 20 names
   - `timestamp` --> normally distributed over 1 day, uniformly throughout the year
-  - `repository` --> random from list of 100 repositories
+  - `repository` --> random from list of 15 repositories
   - `type` --> either "pr" or "commit"
   - `message`? (optional) --> just a join of random words
 
