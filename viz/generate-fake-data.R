@@ -15,7 +15,7 @@ jitter.dates <- function(dates) {
   date.count <- length(dates)
 
   # normal distribution of minutes, with 95% percent falling in + or - 4 hours from center
-  jittered.minutes <- round(rnorm(date.count) * 120)
+  jittered.minutes <- round(rnorm(date.count, sd = .5) * 120)
   jittered.dates <- ymd_hms(as.Date(dates) +
                               # center around 1pm (midpoint of a 9-5 schedule)
                               hours(12) + minutes(jittered.minutes))
@@ -34,4 +34,4 @@ data <- tibble(
   message = generate.col(messages)
 )
 
-rm(times, jitter.dates, people, repos, messages, num.contributions)
+rm(times, jitter.dates, people, repos, messages, num.contributions, generate.col)

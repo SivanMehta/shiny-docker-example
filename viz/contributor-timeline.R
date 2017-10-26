@@ -1,16 +1,18 @@
 source('viz/generate-fake-data.R')
 library(ggplot2)
 
-reset.day <- function(df) {
-  year(df$local.day) <- 2016
-  df$local.time <- df$local.day
-  day(df$local.time) <- 1
-  month(df$local.time) <- 1
-  tz(df$local.time) <- 'America/Los_Angeles'
-  return(df)
+localized.day <- function(day) {
+  localized <- day
+  month(localized) <- 1
+  day(localized) <- 1
+  year(localized) <- 2016
+  localized
 }
 
-tibble(x = as.Date(round(runif(n) * 365), origin = '2016/01/01'), y = rnorm(n)) %>% 
-  ggplot() + 
-    aes(x, y) + 
-    geom_point()
+data %>%
+  mutate(local.day = localized.day(timestamp)) %>%
+  ggplot() +
+    aes(x = timestamp, y = local.day) +
+    geom_point(size = 1) +
+    ylim('2016/01/02', '2016/01/01') +
+    labs(x = 'Date', y = 'Time of Day')
