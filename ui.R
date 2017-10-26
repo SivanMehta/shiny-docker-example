@@ -10,15 +10,23 @@
 library(shiny)
 
 # Define UI for application that draws a histogram
-navbarPage("Contributors!",
- tabPanel("timeline",
+navbarPage("Contributors",
+ tabPanel("Timeline",
   mainPanel(
     plotOutput("timeline", width = "100%")
   )
  ),
  tabPanel("Profiles",
-  mainPanel(
-    plotOutput("distPlot")
+  sidebarLayout(
+    sidebarPanel(
+      radioButtons("plotType",
+        "Profile For",
+        c("User"="user", "Repository"="repository")
+      )
+    ),
+    mainPanel(
+      plotOutput("histogram")
+    )
   )
  )
 )
