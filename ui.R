@@ -13,7 +13,7 @@ library(shiny)
 navbarPage("Contributors",
  tabPanel("Timeline",
   mainPanel(
-    plotOutput("timeline", width = "100%")
+    plotOutput("timeline"), width = "100%", height = "100%"
   )
  ),
  tabPanel("Profiles",
