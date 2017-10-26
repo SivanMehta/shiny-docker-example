@@ -3,7 +3,7 @@
 # run the application by clicking 'Run App' above.
 #
 # Find out more about building applications with Shiny here:
-# 
+#
 #    http://shiny.rstudio.com/
 #
 
@@ -18,12 +18,12 @@ navbarPage("Contributors",
  ),
  tabPanel("Users",
     mainPanel(
-      plotOutput("histogram1")
+      plotOutput("userProfile")
     )
   ),
   tabPanel("Repos",
     mainPanel(
-      plotOutput("histogram2")
+      plotOutput("repoProfile")
     )
   )
 )
