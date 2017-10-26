@@ -40,4 +40,4 @@ data <- tibble(
 )
 
 print('Cleaning up environment...')
-rm(times, jitter.dates, messages, num.contributions, generate.col)
+rm(times, jitter.dates, people, repos, messages, num.contributions, generate.col)
