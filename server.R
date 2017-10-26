@@ -1,29 +1,18 @@
-# before server starts:
-# 	load dependencies
-# 	define plotting functions
-# 	pre-load profiles?
+rm(list = ls())
 source('preboots/generate-fake-data.R')
 source('preboots/plotters.R')
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-
-  output$userProfile <- renderPlot({
-
-    # draw the histogram with the specified number of bins
-    hist(rnorm(1000), main = 'User')
-
-  })
-
-  output$repoProfile <- renderPlot({
-
-    # draw the histogram with the specified number of bins
-    hist(rnorm(1000), main = 'Repos')
-
-  })
-
   output$timeline <- renderPlot({
     plot.timeline()
   })
 
+  output$userProfile <- renderPlot({
+    plot.user.profile('Lucy')
+  })
+
+  output$repoProfile <- renderPlot({
+   plot.repo.profile('Mecifgog')
+  })
 })
