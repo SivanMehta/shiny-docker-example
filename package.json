@@ -1,0 +1,9 @@
+{
+  "name": "shiny-docker-example",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SivanMehta/shiny-docker-example.git"
+  },
+  "author": "Sivan Mehta"
+}
