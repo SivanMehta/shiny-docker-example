@@ -16,17 +16,14 @@ navbarPage("Contributors",
     plotOutput("timeline"), width = "100%", height = "100%"
   )
  ),
- tabPanel("Profiles",
-  sidebarLayout(
-    sidebarPanel(
-      radioButtons("plotType",
-        "Profile For",
-        c("User"="user", "Repository"="repository")
-      )
-    ),
+ tabPanel("Users",
     mainPanel(
-      plotOutput("histogram")
+      plotOutput("histogram1")
+    )
+  ),
+  tabPanel("Repos",
+    mainPanel(
+      plotOutput("histogram2")
     )
   )
- )
 )
