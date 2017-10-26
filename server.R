@@ -3,6 +3,7 @@
 # 	define plotting functions
 # 	pre-load profiles?
 source('preboots/generate-fake-data.R')
+source('preboots/plotters.R')
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -15,9 +16,7 @@ shinyServer(function(input, output) {
   })
   
   output$timeline <- renderPlot({
-    tibble(x = runif(1000), y = rnorm(1000)) %>% ggplot() +
-      aes(x, y) +
-      geom_point()
+    plot.timeline()
   })
   
 })
