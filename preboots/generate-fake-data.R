@@ -1,10 +1,13 @@
-library(jsonlite)
-library(lubridate)
+print('Loading dependencies..')
+library(shiny)
+library(ggplot2)
 library(dplyr)
+library(lubridate)
 
-people <- fromJSON("viz/fake-people.json")
-repos <- fromJSON("viz/fake-repos.json")
-messages <- fromJSON("viz/fake-messages.json")
+print('Loading JSON data....')
+people <- fromJSON("preboots/fake-people.json")
+repos <- fromJSON("preboots/fake-repos.json")
+messages <- fromJSON("preboots/fake-messages.json")
 num.contributions <- length(people) * length(repos) * 100
 
 generate.col <- function(from) {
@@ -23,6 +26,8 @@ jitter.dates <- function(dates) {
   return(jittered.dates)
 }
 
+
+print('Generating dataset....')
 times = seq(as.Date('2016/01/01'), as.Date('2017/01/01'), length.out = num.contributions) %>%
   jitter.dates()
 
@@ -34,4 +39,5 @@ data <- tibble(
   message = generate.col(messages)
 )
 
+print('Cleaning up environment...')
 rm(times, jitter.dates, people, repos, messages, num.contributions, generate.col)
