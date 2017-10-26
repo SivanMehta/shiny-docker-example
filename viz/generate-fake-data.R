@@ -33,3 +33,5 @@ data <- tibble(
   timestamp = times,
   message = generate.col(messages)
 )
+
+rm(times, jitter.dates, people, repos, messages, num.contributions)
