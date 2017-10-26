@@ -1,4 +1,4 @@
-plot.timeline <- function() {
+plot.timeline <- function(person = FALSE, repo = FALSE) {
   localized.day <- function(day) {
     localized <- day
     month(localized) <- 1
@@ -7,12 +7,16 @@ plot.timeline <- function() {
     localized
   }
 
+  person.filter <- ifelse(person, person, '*')
+  repo.filter <- ifelse(repo, repo, '*')
+
   data %>%
+    filter(grepl(person.filter, username)) %>%
+    filter(grepl(repo.filter, repo)) %>%
     mutate(local.day = localized.day(timestamp)) %>%
     ggplot() +
       aes(x = timestamp, y = local.day) +
       geom_point(size = 1) +
       ylim('2016/01/02', '2016/01/01') +
       labs(x = 'Date', y = 'Time of Day')
-  
 }
