@@ -11,11 +11,10 @@ plot.timeline <- function(person = FALSE, repo = FALSE) {
   repo.filter <- ifelse(repo, repo, '*')
 
   data %>%
-    filter(grepl(person.filter, username)) %>%
-    filter(grepl(repo.filter, repo)) %>%
+    mutate(is.highlighted = grepl(person.filter, username) | grepl(person.filter, username)) %>%
     mutate(local.day = localized.day(timestamp)) %>%
     ggplot() +
-      aes(x = timestamp, y = local.day) +
+      aes(x = timestamp, y = local.day, color = is.highlighted) +
       geom_point(size = 1) +
       ylim('2016/01/02', '2016/01/01') +
       labs(x = 'Date', y = 'Time of Day')
