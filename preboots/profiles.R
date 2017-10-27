@@ -15,7 +15,7 @@ plot.repo.profile <- function(repository) {
       coord_flip()
 }
 
- plot.user.profile <- function(person) {
+plot.user.profile <- function(person) {
   data %>%
     filter(username == person) %>%
     group_by(repo) %>%

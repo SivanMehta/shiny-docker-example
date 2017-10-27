@@ -20,11 +20,11 @@ shinyServer(function(input, output) {
 
   # profiles
   output$userProfile <- renderPlot({
-    plot.user.profile('Lucy')
+    plot.user.profile(people[1])
   })
 
   output$repoProfile <- renderPlot({
-   plot.repo.profile('Mecifgog')
+   plot.repo.profile(repos[1])
   })
 
   output$personSelector <- renderUI({
