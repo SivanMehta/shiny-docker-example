@@ -7,7 +7,7 @@ shinyServer(function(input, output) {
 
   # timeline
   output$timeline <- renderPlot({
-    plot.timeline()
+    plot.timeline(input$person, input$repo)
   })
 
   output$personFilter <- renderUI({
@@ -25,13 +25,5 @@ shinyServer(function(input, output) {
 
   output$repoProfile <- renderPlot({
    plot.repo.profile(repos[1])
-  })
-
-  output$personSelector <- renderUI({
-    selectInput("Person", "Choose a person:", as.list(people))
-  })
-
-  output$repoSelector <- renderUI({
-    selectInput("Repo", "Choose a repo:", as.list(repos))
   })
 })

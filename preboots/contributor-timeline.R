@@ -1,4 +1,4 @@
-plot.timeline <- function(person = FALSE, repo = FALSE) {
+plot.timeline <- function(person = "", repo = "") {
   localized.day <- function(day) {
     localized <- day
     month(localized) <- 1
@@ -7,8 +7,8 @@ plot.timeline <- function(person = FALSE, repo = FALSE) {
     localized
   }
 
-  person.filter <- ifelse(person, person, '*')
-  repo.filter <- ifelse(repo, repo, '*')
+  person.filter <- ifelse(nchar(person), person, '*')
+  repo.filter <- ifelse(nchar(repo), repo, '*')
 
   data %>%
     mutate(is.highlighted = grepl(person.filter, username) | grepl(person.filter, username)) %>%

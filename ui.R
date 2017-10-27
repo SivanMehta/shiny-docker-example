@@ -13,20 +13,18 @@ library(shiny)
 navbarPage("Contributors",
  tabPanel("Timeline",
   mainPanel(
-    uiOutput("personFilter"),
-    uiOutput("repoFilter"),
+    selectInput("person", "Choose a person:", choices = people),
+    selectInput("repo", "Choose a repo:", choices = repos),
     plotOutput("timeline"), width = "100%", height = "100%"
   )
  ),
  tabPanel("Users",
     mainPanel(
-      uiOutput("personSelector"),
       plotOutput("userProfile")
     )
   ),
   tabPanel("Repos",
     mainPanel(
-      uiOutput("repoSelector"),
       plotOutput("repoProfile")
     )
   )
