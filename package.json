@@ -5,5 +5,8 @@
     "type": "git",
     "url": "git+https://github.com/SivanMehta/shiny-docker-example.git"
   },
+  "scripts": {
+    "start": "Rscript server.R"
+  },
   "author": "Sivan Mehta"
 }
