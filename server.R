@@ -1,10 +1,11 @@
 rm(list = ls())
 source('preboots/generate-fake-data.R')
 source('preboots/plotters.R')
-
+source('ui.R')
 print('Starting server...')
-shinyServer(function(input, output) {
 
+
+server = function(input, output) {
   # timeline
   output$timeline <- renderPlot({
     plot.timeline(input$person, input$repo)
@@ -26,4 +27,7 @@ shinyServer(function(input, output) {
   output$repoProfile <- renderPlot({
    plot.repo.profile(repos[1])
   })
-})
+}
+
+
+shinyApp(ui = ui, server = server)

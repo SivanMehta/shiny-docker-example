@@ -9,8 +9,7 @@
 
 library(shiny)
 
-# Define UI for application that draws a histogram
-navbarPage("Contributors",
+ui <- navbarPage("Contributors",
  tabPanel("Timeline",
   mainPanel(
     selectInput("person", "Choose a person:", choices = people),
@@ -29,3 +28,4 @@ navbarPage("Contributors",
     )
   )
 )
+
