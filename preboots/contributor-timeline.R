@@ -19,5 +19,6 @@ plot.timeline <- function(person = "", repo = "") {
       ylim('2016/01/02', '2016/01/01') +
       labs(x = 'Date', y = 'Time of Day') +
       scale_colour_manual(values = c("grey", "black")) +
-      scale_alpha_manual(values = c(.1, 1))
+      scale_alpha_manual(values = c(.1, 1)) +
+      theme(legend.position="none")
 }

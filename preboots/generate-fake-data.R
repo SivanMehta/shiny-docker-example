@@ -41,4 +41,6 @@ data <- tibble(
 )
 
 print('Cleaning up environment...')
+people <- c('', people)
+repos <- c('', repos)
 rm(times, jitter.dates, messages, num.contributions, generate.col)
