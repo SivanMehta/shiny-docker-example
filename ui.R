@@ -19,11 +19,13 @@ ui <- navbarPage("Contributors",
  ),
  tabPanel("Users",
     mainPanel(
+      selectInput("personProfile", "Choose a person:", choices = people),
       plotOutput("userProfile")
     )
   ),
   tabPanel("Repos",
     mainPanel(
+      selectInput("repoProfile", "Choose a repo:", choices = repos),
       plotOutput("repoProfile")
     )
   )
