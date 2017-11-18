@@ -14,8 +14,10 @@ plot.timeline <- function(person = "", repo = "") {
     mutate(is.highlighted = grepl(person.filter, username) | grepl(person.filter, username)) %>%
     mutate(local.day = localized.day(timestamp)) %>%
     ggplot() +
-      aes(x = timestamp, y = local.day, color = is.highlighted) +
+      aes(x = timestamp, y = local.day, color = is.highlighted, alpha = is.highlighted) +
       geom_point(size = 1) +
       ylim('2016/01/02', '2016/01/01') +
-      labs(x = 'Date', y = 'Time of Day')
+      labs(x = 'Date', y = 'Time of Day') +
+      scale_colour_manual(values = c("grey", "black")) +
+      scale_alpha_manual(values = c(.1, 1))
 }
