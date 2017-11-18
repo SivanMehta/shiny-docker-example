@@ -10,14 +10,6 @@ server = function(input, output) {
     plot.timeline(input$person, input$repo)
   })
 
-  output$personFilter <- renderUI({
-    selectInput("Person", "Choose a person:", as.list(people))
-  })
-
-  output$repoFilter <- renderUI({
-    selectInput("Repo", "Choose a repo:", as.list(repos))
-  })
-
   # profiles
   output$userProfile <- renderPlot({
     plot.user.profile(people[1])
