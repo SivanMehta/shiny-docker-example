@@ -7,11 +7,11 @@ plot.timeline <- function(person = "", repo = "") {
     localized
   }
 
-  person.filter <- ifelse(nchar(person), person, '*')
-  repo.filter <- ifelse(nchar(repo), repo, '*')
+  person.filter <- ifelse(nchar(person), person, '.')
+  repo.filter <- ifelse(nchar(repo), repo, '.')
 
   data %>%
-    mutate(is.highlighted = grepl(person.filter, username) | grepl(person.filter, username)) %>%
+    mutate(is.highlighted = (grepl(person.filter, username) & grepl(repo.filter, repo))) %>%
     mutate(local.day = localized.day(timestamp)) %>%
     ggplot() +
       aes(x = timestamp, y = local.day, color = is.highlighted, alpha = is.highlighted) +
