@@ -1,12 +1,18 @@
 # hard coded data that will be interactive in the future
 since <- as.Date("2016/11/01")
 
+form.title <- function(selector, profile.type) {
+  paste(
+    ifelse(nchar(selector), selector, paste('Every ', profile.type, sep = '')),
+    "'s experience ranked by ",
+    ifelse(profile.type == 'repo', 'user', 'repo'),
+    sep = ''
+  )
+}
+
 plot.repo.profile <- function(repo) {
   repo.filter <- ifelse(nchar(repo), repo, '.')
-  graph.title <- paste(
-                  ifelse(nchar(repo), repo, 'Every repo'),
-                  "'s experience ranked by user", sep = ''
-                )
+  graph.title <- form.title(repo, 'repo')
   data %>%
     filter(grepl(repo.filter, repo)) %>%
     group_by(username) %>%
@@ -21,10 +27,7 @@ plot.repo.profile <- function(repo) {
 
 plot.user.profile <- function(username) {
   username.filter <- ifelse(nchar(username), username, '.')
-  graph.title <- paste(
-                  ifelse(nchar(username), username, 'Every user'),
-                  "'s experience ranked by repo", sep = ''
-                )
+  graph.title <- form.title(username, 'user')
   data %>%
     filter(grepl(username.filter, username)) %>%
     group_by(repo) %>%
