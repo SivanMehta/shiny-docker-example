@@ -3,6 +3,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(lubridate)
+library(jsonlite)
 
 print('Loading JSON data....')
 people <- fromJSON("preboots/fake-people.json")
@@ -40,4 +41,6 @@ data <- tibble(
 )
 
 print('Cleaning up environment...')
-rm(times, jitter.dates, people, repos, messages, num.contributions, generate.col)
+people <- c('', people)
+repos <- c('', repos)
+rm(times, jitter.dates, messages, num.contributions, generate.col)
