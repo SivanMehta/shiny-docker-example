@@ -4,7 +4,6 @@ source('preboots/plotters.R')
 source('ui.R')
 print('Starting server...')
 
-
 server = function(input, output) {
   # timeline
   output$timeline <- renderPlot({
@@ -30,5 +29,5 @@ server = function(input, output) {
 }
 
 
-app <- shinyApp(ui = ui, server = server)
+app <- shinyApp(ui, server)
 runApp(app, port = 8080)
